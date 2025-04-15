@@ -1,9 +1,14 @@
 import logo from "../img/logo.png";
+import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function Navbar() {
-  const commonClass = "cursor-pointer hover:text-gray-500 duration-300";
+  const commonClass =
+    "cursor-pointer hover:text-gray-500 duration-300 sm:hidden hidden xl:block";
   return (
     <nav className="flex pt-4 px-10 justify-between">
-      <div className="flex items-center gap-12 text-2xl text-gray-300">
+      <div className="flex items-center md:gap-12 sm:gap-8 text-2xl text-gray-300">
+        <FontAwesomeIcon icon={faBars} className="sm:!block xl:!hidden p-4" />
         <img
           src={logo}
           alt="Website logo"
@@ -20,10 +25,18 @@ export default function Navbar() {
         <p className={commonClass}>Discord</p>
       </div>
       <div className="flex items-center text-2xl gap-12 text-gray-200">
-        <p className="text-gray-400 hover:text-gray-200 cursor-pointer duration-300">
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className="text-gray-400 text-3xl md:!hidden"
+        />
+        <FontAwesomeIcon
+          icon={faCircleUser}
+          className="bg-green-400 px-4 py-4 rounded-full text-3xl md:!hidden"
+        />
+        <p className="text-gray-400 hover:text-gray-200 cursor-pointer duration-300 hidden md:block sm:hidden">
           Sign in
         </p>
-        <p className="py-6 px-15 bg-green-400 rounded-full hover:bg-green-500 cursor-pointer duration-300">
+        <p className="py-6 px-15 bg-green-400 rounded-full hover:bg-green-500 cursor-pointer duration-300 hidden md:block sm:hidden">
           Sign up <span>&rarr;</span>
         </p>
       </div>

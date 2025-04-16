@@ -3,6 +3,15 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import backgroundImage from "../img/background.png";
 export default function HeroSection() {
-  return <h1>Hero Section</h1>;
+  return (
+    <section>
+      <img
+        src={backgroundImage}
+        alt="Background Image"
+        className="object-contain h-full"
+      />
+    </section>
+  );
 }

@@ -77,7 +77,7 @@ export default function Navbar() {
       </div>
       {searchActive && (
         <div
-          className="absolute bg-[#1E293B] w-4/5 h-16 top-24 md:left-28 sm:left-24 left-16 rounded-2xl flex gap-8 items-center"
+          className="absolute bg-[#1E293B] w-4/5 h-16 top-24 md:left-28 sm:left-24 left-16 rounded-2xl flex gap-8 items-center z-10"
           ref={searchRef}
         >
           <FontAwesomeIcon

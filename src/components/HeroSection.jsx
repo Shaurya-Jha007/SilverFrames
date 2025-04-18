@@ -15,11 +15,11 @@ export default function HeroSection() {
           backgroundSize: "cover",
           backgroundPosition: "center center",
         }}
-        className="relative h-[72vh] mt-4"
+        className="relative md:h-[72vh] h-[55vh] mt-4"
       >
         <div className="absolute inset-0 before:absolute before:inset-0 before:bg-gradient-to-b before:from-black before:to-transparent before:z-1 after:absolute after:inset-0 after:bg-gradient-to-t after:from-black after:to-transparent after:via-gray-950/60 after:z-1"></div>
         <div className="absolute inset-0 before:absolute before:right-0 rtl:before:left-0 before:top-0 before:bottom-0 before:w-1/5 before:bg-gradient-to-l before:from-black before:to-transparent after:absolute after:left-0 after:top-0 after:bottom-0 after:w-1/2 after:bg-gradient-to-r after:from-black after:to-transparent z-1"></div>
-        <div className="relative flex flex-col gap-8 md:justify-center justify-start md:pt-0 pt-32 items-center h-full w-full z-20">
+        <div className="relative flex flex-col gap-8 md:justify-center justify-start md:pt-0 pt-24 items-center h-full w-full z-20">
           <div className="flex justify-center items-center">
             <img
               src={heroImage}

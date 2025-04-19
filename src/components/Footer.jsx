@@ -15,8 +15,8 @@ export default function Footer() {
   const list2 = ["Privacy Policy", "Cookie Policy", "DMCA", "Terms"];
 
   return (
-    <footer className="flex mb-18 p-8 space-x-32 text-gray-400 text-2xl">
-      <div className="w-1/4">
+    <footer className="flex sm:flex-row flex-col mb-18 p-8 lg:space-x-32 space-x-54 text-gray-400 text-2xl">
+      <div className="w-1/4 lg:block hidden">
         <img src={logo} alt="Site logo" className="h-16" />
         <p className="mt-8">
           PopcornMovies - The best place to watch movies online for free in HD
@@ -24,7 +24,7 @@ export default function Footer() {
         </p>
         <p className="mt-8">&copy; 2025 Popcornmovies. All rights reserved.</p>
       </div>
-      <div className="w-1/4">
+      <div className="w-1/4 lg:ml-0 ml-24">
         <h3 className="font-medium text-white">Browse</h3>
         <div className="flex mt-8 space-x-24">
           <div>
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="sm:ml-0 ml-24 sm:mt-0 mt-16">
         <h3 className="font-medium text-white">About</h3>
         <div className="flex mt-8 space-x-32">
           <div>

@@ -44,7 +44,7 @@ export default function HeroSection() {
               className="text-2xl text-gray-400 w-full outline-none h-full"
             />
           </div>
-          <p className="text-2xl px-12 py-6 mt-8 font-extrabold bg-green-400 rounded-full flex items-center cursor-pointer">
+          <p className="text-2xl px-12 py-6 mt-8 font-extrabold bg-green-400 hover:bg-green-600 duration-300 rounded-full flex items-center cursor-pointer">
             <FontAwesomeIcon icon={faCirclePlay} className="mr-4 text-4xl" />
             Go to Homepage
             <FontAwesomeIcon icon={faChevronRight} className="ml-4" />

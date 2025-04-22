@@ -1,5 +1,5 @@
-import Slider from "../components/Slider";
+import Header from "../components/Slider";
 
 export default function Homepage() {
-  return <Slider />;
+  return <Header />;
 }

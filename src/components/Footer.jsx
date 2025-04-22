@@ -30,14 +30,18 @@ export default function Footer() {
           <div>
             {list1.slice(0, list1.length / 2).map((item) => {
               return (
-                <p className="mb-8 hover:text-white hover:underline">{item}</p>
+                <p className="mb-8 hover:text-white hover:underline" key={item}>
+                  {item}
+                </p>
               );
             })}
           </div>
           <div>
             {list1.slice(list1.length / 2, list1.length).map((item) => {
               return (
-                <p className="mb-8 hover:text-white hover:underline">{item}</p>
+                <p className="mb-8 hover:text-white hover:underline" key={item}>
+                  {item}
+                </p>
               );
             })}
           </div>
@@ -49,14 +53,18 @@ export default function Footer() {
           <div>
             {list2.slice(0, list2.length / 2).map((item) => {
               return (
-                <p className="mb-4 hover:text-white hover:underline">{item}</p>
+                <p className="mb-4 hover:text-white hover:underline" key={item}>
+                  {item}
+                </p>
               );
             })}
           </div>
           <div>
             {list2.slice(list2.length / 2, list2.length).map((item) => {
               return (
-                <p className="mb-4 hover:text-white hover:underline">{item}</p>
+                <p className="mb-4 hover:text-white hover:underline" key={item}>
+                  {item}
+                </p>
               );
             })}
           </div>

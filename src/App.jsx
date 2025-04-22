@@ -2,15 +2,20 @@ import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import DefaultPage from "./pages/DefaultPage";
 import Footer from "./components/Footer";
+import Homepage from "./pages/Homepage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// const apiKey = import.meta.env.VITE_API_KEY;
 function App() {
+  const queryClient = new QueryClient();
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<DefaultPage />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <Routes>
+          <Route path="/" element={<DefaultPage />} />
+          <Route path="/home" element={<Homepage />} />
+        </Routes>
+      </QueryClientProvider>
       <Footer />
     </>
   );

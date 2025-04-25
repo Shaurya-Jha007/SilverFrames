@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchTrendingMovies } from "../../util/fetch";
 import Slider from "react-slick";
 import Arrow from "../../util/Arrow";
+import loader from "../img/loader.svg";
 
 export default function Header() {
   const baseUrl = "https://image.tmdb.org/t/p/original";
@@ -15,6 +16,24 @@ export default function Header() {
     } else {
       return str.slice(0, char) + "...";
     }
+  }
+
+  if (isError) {
+    return (
+      <div className="flex h-[75vh] justify-center items-center">
+        <p className="text-7xl text-red-600">
+          {error.message || "Failed to fetch! Please try again."}
+        </p>
+      </div>
+    );
+  }
+
+  if (isPending) {
+    return (
+      <div className="h-[75vh] flex justify-center items-center">
+        <img src={loader} alt="Loader" />
+      </div>
+    );
   }
 
   if (data) {
@@ -38,7 +57,7 @@ export default function Header() {
         <Slider {...settings}>
           {renderData.map((movie, index) => {
             return (
-              <div className="h-[70vh]">
+              <div className="2xl:h-[70vh] xl:h-[55vh] lg:h-[50vh] sm:h-[80vh] h-[80vh]">
                 <div className="absolute inset-0 before:absolute before:inset-0 before:bg-gradient-to-b before:from-black before:to-transparent before:z-1 after:absolute after:inset-0 after:bg-gradient-to-t after:from-black after:to-transparent after:via-gray-950/60 after:z-1"></div>
                 <div className="absolute inset-0 before:absolute before:right-0 rtl:before:left-0 before:top-0 before:bottom-0 before:w-1/6 before:bg-gradient-to-l before:from-black before:to-transparent after:absolute after:left-0 after:top-0 after:bottom-0 after:w-1/6 after:bg-gradient-to-r after:from-black after:to-transparent z-1"></div>
                 <div
@@ -50,8 +69,10 @@ export default function Header() {
                   className="h-full w-full"
                   key={index}
                 >
-                  <div className="absolute flex flex-col gap-12 top-1/4 left-10 z-10 w-1/2">
-                    <h1 className="text-7xl ">{movie.title}</h1>
+                  <div className="absolute flex flex-col gap-12 2xl:top-1/4 xl:top-1/9 lg:top-1/8 sm:top-1/4 top-1/4 left-10 z-10 md:w-1/2 sm:w-2/3 w-11/12">
+                    <h1 className="text-5xl font-bold sm:text-7xl text-green-300">
+                      {movie.title}
+                    </h1>
                     <div className="flex gap-12 items-center text-xl text-gray-200">
                       <p className="text-xl text-black bg-yellow-400 px-4 py-1.5 rounded-md font-semibold">
                         {Math.round(movie.vote_average * 10) / 10}

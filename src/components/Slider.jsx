@@ -9,6 +9,13 @@ export default function Header() {
     queryKey: ["trending"],
     queryFn: fetchTrendingMovies,
   });
+  function truncate(str, char = 150) {
+    if (str.length < char) {
+      return str;
+    } else {
+      return str.slice(0, char) + "...";
+    }
+  }
 
   if (data) {
     const settings = {
@@ -27,11 +34,11 @@ export default function Header() {
     const renderData = data.results.slice(0, 10);
     console.log(renderData);
     return (
-      <header className="h-[75vh] mt-4">
+      <header className="mt-4">
         <Slider {...settings}>
           {renderData.map((movie, index) => {
             return (
-              <div className="h-[75vh]">
+              <div className="h-[70vh]">
                 <div className="absolute inset-0 before:absolute before:inset-0 before:bg-gradient-to-b before:from-black before:to-transparent before:z-1 after:absolute after:inset-0 after:bg-gradient-to-t after:from-black after:to-transparent after:via-gray-950/60 after:z-1"></div>
                 <div className="absolute inset-0 before:absolute before:right-0 rtl:before:left-0 before:top-0 before:bottom-0 before:w-1/6 before:bg-gradient-to-l before:from-black before:to-transparent after:absolute after:left-0 after:top-0 after:bottom-0 after:w-1/6 after:bg-gradient-to-r after:from-black after:to-transparent z-1"></div>
                 <div
@@ -42,7 +49,31 @@ export default function Header() {
                   }}
                   className="h-full w-full"
                   key={index}
-                ></div>
+                >
+                  <div className="absolute flex flex-col gap-12 top-1/4 left-10 z-10 w-1/2">
+                    <h1 className="text-7xl ">{movie.title}</h1>
+                    <div className="flex gap-12 items-center text-xl text-gray-200">
+                      <p className="text-xl text-black bg-yellow-400 px-4 py-1.5 rounded-md font-semibold">
+                        {Math.round(movie.vote_average * 10) / 10}
+                      </p>
+                      <p className="text-lg px-3 py-1.5 rounded-lg bg-gray-500/50">
+                        HD
+                      </p>
+                      <p>{movie.original_language.toUpperCase()}</p>
+                      <p>{movie.release_date.slice(0, 4)}</p>
+                    </div>
+                    <div>
+                      <p className="text-2xl leading-12">
+                        {truncate(movie.overview)}
+                      </p>
+                    </div>
+                    <div className="flex">
+                      <p className="bg-green-400 text-2xl font-bold px-18 py-6 rounded-full cursor-pointer hover:bg-green-600 duration-300">
+                        Details
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             );
           })}

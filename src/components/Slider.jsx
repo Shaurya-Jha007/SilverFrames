@@ -46,12 +46,11 @@ export default function Header() {
       slidesToScroll: 1,
       autoplay: true,
       pauseOnHover: true,
-      autoPlaySpeed: 2000,
+      autoplaySpeed: 2500,
       prevArrow: <Arrow />,
       nextArrow: <Arrow type={true} />,
     };
     const renderData = data.results.slice(0, 10);
-    console.log(renderData);
     return (
       <header className="mt-4">
         <Slider {...settings}>

@@ -1,5 +1,11 @@
+import Popular from "../components/Popular";
 import Header from "../components/Slider";
 
 export default function Homepage() {
-  return <Header />;
+  return (
+    <main>
+      <Header />
+      <Popular />
+    </main>
+  );
 }

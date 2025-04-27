@@ -36,7 +36,7 @@ export async function fetchPopularMoviesAndShows() {
 
   if (moviesData) {
     const showsResponse = await fetch(
-      `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
     );
 
     if (!showsResponse.ok) {
@@ -50,6 +50,7 @@ export async function fetchPopularMoviesAndShows() {
 
     data = [...showsData.results, ...moviesData.results];
   }
+
   if (data) {
     return data;
   }

@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPopularMoviesAndShows } from "../../util/fetch";
 import Slider from "react-slick";
+import { baseUrl } from "./Slider";
+import loader from "../img/loader.svg";
 export default function Popular() {
   const { data, error, isError, isPending } = useQuery({
     queryKey: ["popularMoviesAndShows"],
     queryFn: fetchPopularMoviesAndShows,
   });
-  const baseUrl = "https://image.tmdb.org/t/p/original";
 
   const settings = {
     dots: false,
@@ -64,7 +65,6 @@ export default function Popular() {
                     backgroundPosition: "center center",
                   }}
                 >
-                  <div className="absolute bottom-0 left-0 right-0 h-[15%] bg-gradient-to-t from-black to-transparent"></div>
                   <p className="mt-3 ml-3 bg-green-400 inline-block text-xl px-3 py-0.5 rounded-lg">
                     HD
                   </p>
@@ -74,6 +74,26 @@ export default function Popular() {
           })}
         </Slider>
       </section>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className="h-[55vh] text-red-600 flex justify-center items-center">
+        <p className="text-6xl">
+          {error.message || "Failed to fetch popular movies! Please try again."}
+        </p>
+      </section>
+    );
+  }
+
+  if (isPending) {
+    return (
+      <img
+        src={loader}
+        alt="Spinning loader"
+        className="h-[35vh] my-4 mx-auto"
+      />
     );
   }
 }

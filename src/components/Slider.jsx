@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import Arrow from "../../util/Arrow";
 import loader from "../img/loader.svg";
 
+export const baseUrl = "https://image.tmdb.org/t/p/original";
 export default function Header() {
-  const baseUrl = "https://image.tmdb.org/t/p/original";
   const { data, isError, error, isPending } = useQuery({
     queryKey: ["trending"],
     queryFn: fetchTrendingMovies,

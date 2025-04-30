@@ -48,7 +48,6 @@ export default function Popular() {
   };
 
   if (data) {
-    console.log(data);
     return (
       <section className="text-white lg:mt-24 mt-8 px-8 font-bold">
         <h2 className="text-3xl">Popular Movies/Shows</h2>

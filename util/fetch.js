@@ -55,3 +55,19 @@ export async function fetchPopularMoviesAndShows() {
     return data;
   }
 }
+
+export async function fetchLatestMovies(type) {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/discover/${type}?api_key=${apiKey}&language=en-US`
+  );
+  if (!response.ok) {
+    const error = new Error(
+      `Failed to fetch latest ${type}! Please try again later.`
+    );
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+  const data = await response.json();
+  return data;
+}

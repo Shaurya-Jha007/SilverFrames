@@ -15,7 +15,7 @@ export default function Footer() {
   const list2 = ["Privacy Policy", "Cookie Policy", "DMCA", "Terms"];
 
   return (
-    <footer className="flex sm:flex-row flex-col mb-18 p-8 lg:space-x-32 space-x-54 text-gray-400 text-2xl">
+    <footer className="flex sm:flex-row flex-col mb-18 mt-8 p-8 lg:space-x-32 space-x-54 text-gray-400 text-2xl">
       <div className="w-1/4 lg:block hidden">
         <img src={logo} alt="Site logo" className="h-16" />
         <p className="mt-8">

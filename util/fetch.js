@@ -58,7 +58,7 @@ export async function fetchPopularMoviesAndShows() {
 
 export async function fetchLatestMovies(type) {
   const response = await fetch(
-    `https://api.themoviedb.org/3/discover/${type}?api_key=${apiKey}&language=en-US`
+    `https://api.themoviedb.org/3/discover/${type}?api_key=${apiKey}&page=2&language=en-US`
   );
   if (!response.ok) {
     const error = new Error(

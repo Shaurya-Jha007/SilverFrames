@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchTrendingMovies } from "../../util/fetch";
+import { motion } from "motion/react";
 import Slider from "react-slick";
 import Arrow from "../../util/Arrow";
 import loader from "../img/loader.svg";
@@ -52,7 +53,20 @@ export default function Header() {
     };
     const renderData = data.results.slice(0, 10);
     return (
-      <header className="mt-4">
+      <motion.header
+        initial={{
+          opacity: 0,
+          x: -100,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        transition={{
+          duration: 2,
+        }}
+        className="mt-4"
+      >
         <Slider {...settings}>
           {renderData.map((movie, index) => {
             return (
@@ -98,7 +112,7 @@ export default function Header() {
             );
           })}
         </Slider>
-      </header>
+      </motion.header>
     );
   }
 }

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { fetchIndividualMovie } from "../../util/fetch";
 import { useQuery } from "@tanstack/react-query";
 import { baseUrl } from "../components/Slider";
+import loader from "../img/loader.svg";
 export default function MoviesPage() {
   const { movieId } = useParams();
 
@@ -28,8 +29,8 @@ export default function MoviesPage() {
     ];
     console.log(movieId, data);
     return (
-      <main className="h-[70vh] flex items-center gap-16 mb-16 mt-8 w-[95vw] my-0 mx-auto">
-        <div className="w-1/5">
+      <main className="xl:h-[70vh] lg:h-[50vh] flex items-center gap-16 mb-16 mt-8 w-[95vw] my-0 mx-auto">
+        <div className="lg:w-1/5 w-2/5 h-11/12">
           <img
             src={`${baseUrl}${data.poster_path}`}
             alt={`${data.title} movie poster image`}
@@ -39,7 +40,7 @@ export default function MoviesPage() {
             Add to Watchlist
           </p>
         </div>
-        <div className="h-11/12 w-4/5 mt-6 flex flex-col gap-12">
+        <div className="h-11/12 lg:w-4/5 w-3/5 flex flex-col gap-12">
           <p className="text-3xl font-semibold text-gray-300">
             {data.original_title}
           </p>
@@ -49,7 +50,9 @@ export default function MoviesPage() {
             <p>{data.runtime} min</p>
             <p>{data.release_date.slice(0, 4)}</p>
           </div>
-          <p className="text-gray-400 text-2xl">{data.overview}</p>
+          <p className="text-gray-400 text-2xl lg:block hidden">
+            {data.overview}
+          </p>
           <div className="flex flex-col gap-8 text-gray-400">
             <p className="text-2xl">
               Genre :{" "}
@@ -78,6 +81,26 @@ export default function MoviesPage() {
           </div>
         </div>
       </main>
+    );
+  }
+
+  if (isError) {
+    console.log(error);
+    return (
+      <section className="h-[70vh] flex justify-center items-center">
+        <p className="text-4xl text-red-600">
+          {error.message || "Failed to fetch movie data! Please try again."}
+        </p>
+      </section>
+    );
+  }
+
+  if (isPending) {
+    console.log(isPending);
+    return (
+      <section className="h-[70vh] flex justify-center items-center">
+        <img src={loader} alt="Loading Spinner" />
+      </section>
     );
   }
 }

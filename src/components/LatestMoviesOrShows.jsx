@@ -4,6 +4,7 @@ import { baseUrl } from "./Slider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import loader from "../img/loader.svg";
+import { Link } from "react-router-dom";
 
 export default function LatestMoviesOrShows({ type }) {
   const { data, error, isError, isPending } = useQuery({
@@ -23,15 +24,16 @@ export default function LatestMoviesOrShows({ type }) {
     console.log(latest);
     return (
       <section className="px-8 2xl:h-[80vh] h-auto mt-16">
-        <div className="">
+        <div>
           <h2 className="text-3xl font-bold">
             Latest {type == "movie" ? "Movie" : "Show"}s
           </h2>
           <div className="flex flex-wrap mt-8 gap-10">
             {latest.map((item, index) => {
               return (
-                <div
-                  className="relative cursor-pointer group duration-300 w-64"
+                <Link
+                  to={item.title ? `/movie/${item.id}` : ""}
+                  className="relative group duration-300 w-64"
                   key={index}
                 >
                   <img
@@ -62,7 +64,7 @@ export default function LatestMoviesOrShows({ type }) {
                       {truncate(type == "movie" ? item.title : item.name)}
                     </p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>

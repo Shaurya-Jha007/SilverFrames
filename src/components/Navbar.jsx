@@ -1,4 +1,5 @@
 import logo from "../img/logo.png";
+import { Link } from "react-router-dom";
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -40,11 +41,13 @@ export default function Navbar() {
         }`}
       >
         <FontAwesomeIcon icon={faBars} className="sm:!block xl:!hidden p-4" />
-        <img
-          src={logo}
-          alt="Website logo"
-          className="h-12 mr-8 cursor-pointer"
-        />
+        <Link to="/">
+          <img
+            src={logo}
+            alt="Website logo"
+            className="h-12 mr-8 cursor-pointer"
+          />
+        </Link>
         {list.map((item) => {
           return (
             <p className={commonClass} key={item}>

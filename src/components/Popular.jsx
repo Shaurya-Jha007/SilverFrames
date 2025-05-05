@@ -3,6 +3,7 @@ import { fetchPopularMoviesAndShows } from "../../util/fetch";
 import Slider from "react-slick";
 import { baseUrl } from "./Slider";
 import loader from "../img/loader.svg";
+import { Link } from "react-router-dom";
 export default function Popular() {
   const { data, error, isError, isPending } = useQuery({
     queryKey: ["popularMoviesAndShows"],
@@ -55,19 +56,23 @@ export default function Popular() {
           {data.map((show, index) => {
             return (
               <div className="xl:h-[55vh] lg:h-[45vh] md:h-[40vh] sm:h-[50vh] h-[45vh] w-full mt-8">
-                <div
-                  key={index}
-                  className="h-5/6 w-11/12 rounded-2xl cursor-pointer hover:scale-110 duration-300 overflow-hidden z-10"
-                  style={{
-                    backgroundImage: `url(${baseUrl}${show.poster_path})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center center",
-                  }}
+                <Link
+                  to={show.title ? `/movie/${show.id}` : `/show/${show.id}`}
                 >
-                  <p className="mt-3 ml-3 bg-green-400 inline-block text-xl px-3 py-0.5 rounded-lg">
-                    HD
-                  </p>
-                </div>
+                  <div
+                    key={index}
+                    className="h-5/6 w-11/12 rounded-2xl hover:scale-110 duration-300 overflow-hidden z-10"
+                    style={{
+                      backgroundImage: `url(${baseUrl}${show.poster_path})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center center",
+                    }}
+                  >
+                    <p className="mt-3 ml-3 bg-green-400 inline-block text-xl px-3 py-0.5 rounded-lg">
+                      HD
+                    </p>
+                  </div>
+                </Link>
               </div>
             );
           })}

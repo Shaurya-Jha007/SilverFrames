@@ -32,7 +32,7 @@ export default function LatestMoviesOrShows({ type }) {
             {latest.map((item, index) => {
               return (
                 <Link
-                  to={item.title ? `/movie/${item.id}` : ""}
+                  to={item.title ? `/movie/${item.id}` : `/show/${item.id}`}
                   className="relative group duration-300 w-64"
                   key={index}
                 >

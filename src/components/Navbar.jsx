@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <nav className="flex pt-4 px-10 justify-between">
       <div
-        className={`flex items-center md:gap-12 sm:gap-8 text-2xl text-gray-300 ${
+        className={`flex items-center md:gap-10 sm:gap-8 text-2xl text-gray-300 ${
           searchActive ? "blur-sm opacity-70" : "blur-none"
         }`}
       >
@@ -57,7 +57,7 @@ export default function Navbar() {
         })}
       </div>
       <div
-        className={`flex items-center text-2xl gap-12 text-gray-200 ${
+        className={`flex items-center text-2xl gap-16 text-gray-200 ${
           searchActive ? "blur-sm opacity-70" : "blur-none"
         }`}
       >

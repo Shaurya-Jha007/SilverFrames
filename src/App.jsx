@@ -20,7 +20,7 @@ function App() {
           <Route path="/show/:showId" element={<ShowsPage />} />
         </Routes>
       </QueryClientProvider>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

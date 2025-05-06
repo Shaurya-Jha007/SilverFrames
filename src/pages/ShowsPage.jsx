@@ -3,8 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchIndividualShow } from "../../util/fetch";
 import { baseUrl } from "../components/Slider";
 import loader from "../img/loader.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { watchListActions } from "../../store/watchListStore";
 
 export default function ShowsPage() {
+  const watchList = useSelector((state) => state);
+  const dispatch = useDispatch();
+  console.log(watchList);
+
   const { showId } = useParams();
   const { data, isPending, isError, error } = useQuery({
     queryKey: [showId],
@@ -29,16 +35,24 @@ export default function ShowsPage() {
     ];
     // console.log(movieId, data);
     return (
-      <main className="xl:h-[70vh] lg:h-[50vh] flex items-center gap-16 mb-16 mt-8 w-[95vw] my-0 mx-auto">
+      <main className="xl:h-[75vh] lg:h-[60vh] flex items-center gap-16 mb-16 mt-8 w-[95vw] my-0 mx-auto">
         <div className="lg:w-1/5 w-2/5 h-11/12">
           <img
             src={`${baseUrl}${data.poster_path}`}
             alt={`${data.name} movie poster image`}
             className="w-full rounded-xl"
           />
-          <p className="text-gray-300 mt-4 text-center py-5 text-2xl rounded-lg font-semibold bg-gray-800 hover:bg-gray-500/80 hover:text-white cursor-pointer w-full ">
+          <p
+            onClick={() => dispatch(watchListActions.addToWatchlist(data))}
+            className="text-gray-300 mt-4 text-center py-5 text-2xl rounded-lg font-semibold bg-gray-800 hover:bg-gray-500/80 hover:text-white cursor-pointer w-full "
+          >
             Add to Watchlist
           </p>
+          {watchList.some((item) => item.id === data.id) && (
+            <p className="text-2xl text-green-400 text-center mt-6">
+              Added to Watchlist
+            </p>
+          )}
         </div>
         <div className="h-11/12 lg:w-4/5 w-3/5 flex flex-col gap-12">
           {/* <p className="text-3xl font-semibold text-gray-300">{data.name}</p> */}
@@ -105,7 +119,6 @@ export default function ShowsPage() {
   }
 
   if (isPending) {
-    console.log(isPending);
     return (
       <section className="h-[70vh] flex justify-center items-center">
         <img src={loader} alt="Loading Spinner" />

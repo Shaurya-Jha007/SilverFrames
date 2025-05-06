@@ -2,9 +2,14 @@ import { useParams } from "react-router-dom";
 import { fetchIndividualMovie } from "../../util/fetch";
 import { useQuery } from "@tanstack/react-query";
 import { baseUrl } from "../components/Slider";
+import { useDispatch, useSelector } from "react-redux";
+import { watchListActions } from "../../store/watchListStore";
 import loader from "../img/loader.svg";
 export default function MoviesPage() {
+  const watchList = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { movieId } = useParams();
+  console.log(watchList);
 
   const { data, error, isError, isPending } = useQuery({
     queryKey: [movieId],
@@ -36,9 +41,17 @@ export default function MoviesPage() {
             alt={`${data.title} movie poster image`}
             className="w-full rounded-xl"
           />
-          <p className="text-gray-300 mt-4 text-center py-5 text-2xl rounded-lg font-semibold bg-gray-800 hover:bg-gray-500/80 hover:text-white cursor-pointer w-full ">
+          <p
+            onClick={() => dispatch(watchListActions.addToWatchlist(data))}
+            className="text-gray-300 mt-4 text-center py-5 text-2xl rounded-lg font-semibold bg-gray-800 hover:bg-gray-500/80 hover:text-white cursor-pointer w-full "
+          >
             Add to Watchlist
           </p>
+          {watchList.some((item) => item.id === data.id) && (
+            <p className="text-2xl text-green-400 text-center mt-6">
+              Added to Watchlist
+            </p>
+          )}
         </div>
         <div className="h-11/12 lg:w-4/5 w-3/5 flex flex-col gap-12">
           <p className="text-3xl font-semibold text-gray-300">

@@ -74,9 +74,12 @@ export default function Navbar() {
         <p className="text-gray-400 hover:text-gray-200 cursor-pointer duration-300 hidden md:block sm:hidden">
           Sign in
         </p>
-        <p className="py-6 px-15 bg-green-400 rounded-full hover:bg-green-500 cursor-pointer duration-300 hidden md:block sm:hidden">
-          Sign up <span>&rarr;</span>
-        </p>
+        <Link
+          to="/watchlist"
+          className="py-6 px-15 bg-green-400 rounded-full font-bold hover:bg-green-500 cursor-pointer duration-300 hidden md:block sm:hidden"
+        >
+          Watchlist <span>&rarr;</span>
+        </Link>
       </div>
       {searchActive && (
         <div

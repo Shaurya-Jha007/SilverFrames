@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import MoviesPage from "./pages/MoviesPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ShowsPage from "./pages/ShowsPage";
+import WatchList from "./pages/WatchList";
 
 function App() {
   const queryClient = new QueryClient();
@@ -18,9 +19,10 @@ function App() {
           <Route path="/home" element={<Homepage />} />
           <Route path="/movie/:movieId" element={<MoviesPage />} />
           <Route path="/show/:showId" element={<ShowsPage />} />
+          <Route path="/watchlist" element={<WatchList />} />
         </Routes>
       </QueryClientProvider>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
